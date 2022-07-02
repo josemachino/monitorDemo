@@ -1,0 +1,35 @@
+Maven Project: Monitor
+
+Java: 18
+JUnit: 5
+We use java 18 because JUnit 5 requires it.
+
+App.java
+    - Main Class that has the monitor service and contain the main method. If not argument is passed, the program finishes.
+    - Purpose: Inspect a folder for new files to show statistics
+    - Interaction: ParserService, StatisticService are called in main to first parser file and then show the statistics
+service 
+    - Interfaces:        
+        - StatisticService.java: methods definition that every statistic service class must implement. These methods are: print and calculate            
+    - Abstract class
+        - ParserService.java: abstract methods that every parser must implement. These methods are processFile and moveFile
+    - Classes
+        - PlainTextParserService.java extends  ParserService
+        - StatisticServiceDotImpl.java implements StatisticService
+        - StatisticServiceWordImpl.java implements StatisticService
+        - StatisticServiceFrequentWordImpl.java implements StatisticService
+Test
+    ParserServiceTest
+        - Two test methods of processFile and moveFile
+        - The test of moveFile needs to exist test2.txt in resources with the following content: sedevacante
+    StatisticServiceTest
+        - Six test methods for statistic services.
+
+Execution
+    - Application
+    Inside the target folder we run the command: java -cp monitor-1.jar com.hicx.App "PATH_TO_DIRECTORY"
+    where PATH_TO_DIRECTORY is replaced with the path of directory where we are going to inspect.
+    - Testing
+    Locate inside the project folder and run:
+    mvn test 
+
