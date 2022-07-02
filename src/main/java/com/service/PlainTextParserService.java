@@ -45,7 +45,6 @@ public class PlainTextParserService extends ParserService {
     public void moveToSubFolder(File file) throws IOException {
         String sourceDirectory = file.getParent();
         String targetDirectory = sourceDirectory + "/processed";
-        System.out.println(targetDirectory);
         File directory = new File(targetDirectory);
         if (!directory.exists()) {
             directory.mkdir();
